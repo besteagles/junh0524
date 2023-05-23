@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 전체적인 스타일 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* 메인 스타일 */
+    .main {
+      width: 100%;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('https://img.freepik.com/premium-photo/amazing-sky-with-clouds-and-airplane-wing_36367-1022.jpg?w=900'); /* 배경 이미지 링크를 적용해주세요 */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 20px;
+    }
+    
+    /* 입력창 스타일 */
+    .input-section {
+      margin-bottom: 20px;
+    }
+    
+    .input-section input[type="text"] {
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    
+    .input-section button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff5f5f;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    
+    /* 방명록 스타일 */
+    .guestbook {
+      max-height: 30%;
+      overflow-y: auto;
+      margin-top: auto;
+      text-align: left;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.8); /* 투명한 하얀 배경 */
+      backdrop-filter: blur(5px); /* 블러 처리 */
+      border-radius: 10px;
+      color: black; /* 글씨 색상을 검은색으로 설정 */
+    }
+    
+    .guestbook p {
+      margin-bottom: 10px;
+    }
+    
+    /* 반응형 스타일 */
+    @media (max-width: 600px) {
+      .input-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .input-section input[type="text"] {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <h1>최준형 생일 축하</h1>
+    
+    <div class="input-section">
+      <input type="text" id="nameInput" placeholder="이름">
+      <input type="text" id="messageInput" placeholder="방명록을 남겨주세요">
+      <button onclick="addGuestbookEntry()">등록</button>
+    </div>
+    
+    <div class="guestbook" id="guestbook">
+      
+    </div>
+  </div>
+  
+  <script>
+    function addGuestbookEntry() {
+      var name = document.getElementById("nameInput").value;
+      var message = document.getElementById("messageInput").value;
+      
+      var guestbook = document.getElementById("guestbook");
+      
+      var entry = document.createElement("p");
+      var currentDate = new Date().toLocaleString();
+      entry.innerHTML = "<strong>" + name + "</strong>: " + message + " (" + currentDate + ")";
+      
+      guestbook.appendChild(entry);
+      
+      document.getElementById("nameInput").value = "";
+      document.getElementById("messageInput").value = "";
+    }
+  </script>
+</body>
+</html>
+
